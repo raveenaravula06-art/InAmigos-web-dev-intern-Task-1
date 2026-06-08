@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InAmigos Foundation | Official Awareness & Mobilization Platform</title>
+    <style>
+        /* ==========================================================================
+           1. CORE DESIGN SYSTEM & REUSABLE CLASSES
+           ========================================================================== */
+        :root {
+            --primary-blue: #0f4c81;     /* Trust Blue */
+            --primary-green: #1b4d3e;    /* Impact Green */
+            --accent-lime: #2ecc71;      /* Success/Growth Green */
+            --dark-charcoal: #2d3436;   /* Premium Readability Text */
+            --light-mint: #f4f9f4;       /* Clean Section Background */
+            --pure-white: #ffffff;
+            --muted-gray: #636e72;
+            --border-color: #dfe6e9;
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            --transition-smooth: all 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--pure-white);
+            color: var(--dark-charcoal);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 0;
+        }
+
+        /* Standardized Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--primary-blue);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--muted-gray);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* Shared Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--pure-white);
+            box-shadow: 0 5px 15px rgba(15, 76, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #0b3459;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 76, 129, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-green);
+            color: var(--pure-white);
+            box-shadow: 0 5px 15px rgba(27, 77, 62, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: #113127;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(27, 77, 62, 0.4);
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION BAR
+           ========================================================================== */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-green);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-charcoal);
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links .nav-cta {
+            background-color: var(--primary-green);
+            color: var(--pure-white);
+            padding: 10px 22px;
+            border-radius: 4px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background-color: var(--primary-blue);
+            color: var(--pure-white);
+        }
+
+        /* ==========================================================================
+           3. HERO / WELCOME BANNER
+           ========================================================================== */
+        #home {
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.9), rgba(27, 77, 62, 0.85)), 
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920') no-repeat center center/cover;
+            padding: 160px 0 140px 0;
+            color: var(--pure-white);
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.35rem;
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* ==========================================================================
+           4. MISSION & INTRO SECTION
+           ========================================================================== */
+        #about {
+            background-color: var(--pure-white);
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--muted-gray);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .about-graphic {
+            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
+            height: 400px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-graphic-overlay {
+            padding: 40px;
+            color: var(--pure-white);
+            text-align: center;
+        }
+
+        .about-graphic-overlay h4 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           5. ONGOING PROJECTS GRID
+           ========================================================================== */
+        #projects {
+            background-color: var(--light-mint);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--pure-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border-top: 5px solid var(--primary-blue);
+            transition: var(--transition-smooth);
+            padding: 40px;
+        }
+
+        .project-card:nth-child(even) {
+            border-top-color: var(--primary-green);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: var(--muted-gray);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .project-scope {
+            background-color: #f1f2f6;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: inline-block;
+        }
+
+        /* ==========================================================================
+           6. SOCIAL IMPACT METRICS & OBJECTIVES
+           ========================================================================== */
+        #impact {
+            background-color: var(--pure-white);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .impact-card {
+            background-color: var(--pure-white);
+            border: 1px solid var(--border-color);
+            padding: 35px 20px;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .impact-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--card-shadow);
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .impact-card:nth-child(even) .impact-number {
+            color: var(--primary-green);
+        }
+
+        .impact-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+            margin-bottom: 8px;
+        }
+
+        .impact-desc {
+            font-size: 0.9rem;
+            color: var(--muted-gray);
+        }
+
+        /* ==========================================================================
+           7. CALL TO ACTION & VALIDATED FORM STYLING
+           ========================================================================== */
+        #join {
+            background-color: var(--light-mint);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .join-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .join-info h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .join-info p {
+            color: var(--muted-gray);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: var(--dark-charcoal);
+        }
+
+        .benefit-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-lime);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .form-wrapper {
+            background-color: var(--pure-white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--dark-charcoal);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #fafafa;
+            transition: var(--transition-smooth);
+            color: var(--dark-charcoal);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            background-color: var(--pure-white);
+            outline: none;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* ==========================================================================
+           8. TARGET INTERACTIVE POPUP ENGINE (MODAL SPECIFICATION)
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 39, 46, 0.75);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        /* Triggers configuration layout when window points to target ID anchor */
+        .modal-overlay:target {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--pure-white);
+            width: 90%;
+            position: relative;
+            transform: scale(0.8);
+            transition: var(--transition-smooth);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .modal-overlay:target .modal-box {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            color: var(--muted-gray);
+            text-decoration: none;
+            line-height: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-blue);
+        }
+
+        /* ==========================================================================
+           9. FOOTER SYSTEM
+           ========================================================================== */
+        footer {
+            background-color: #1e272e;
+            color: var(--pure-white);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-about h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--pure-white);
+        }
+
+        .footer-about h3 span {
+            color: var(--accent-lime);
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--pure-white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--pure-white);
+            padding-left: 5px;
+        }
+
+        .hashtag-container span {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.1);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin: 0 6px 10px 0;
+            color: #e2e8f0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           10. ULTRA RESPONSIVE DESIGN BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .about-layout, .project-grid, .join-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .nav-links li {
+                margin-left: 0;
+            }
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 2. NAVIGATION BAR -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1>InAmigos <span>Foundation</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#join" class="nav-cta">Apply to Volunteer</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 3. HERO SECTION -->
+    <section id="home">
+        <div class="container hero-content">
+            <h2>Transforming Intentions Into Lasting Social Change</h2>
+            <p>We implement structural development initiatives across education, women's self-reliance, rural healthcare access, and regional environmental conservation projects.</p>
+            <div class="hero-actions">
+                <a href="#join" class="btn btn-primary">Join As A Volunteer</a>
+                <a href="#projects" class="btn btn-secondary">Our Ongoing Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ABOUT SECTION -->
+    <section id="about">
+        <div class="container about-layout">
+            <div class="about-text">
+                <h3>Bridging Gaps, Building Futures</h3>
+                <p>InAmigos Foundation is an active non-profit organization established to cultivate grassroots developmental solutions. We believe that real societal change does not come from temporary fixes, but from structural community empowerment.</p>
+                <p>Our operation model ensures that resource distributions are paired with foundational skill-building pipelines. By focusing on long-term project mentoring rather than isolated donation events, we ensure communities achieve genuine self-reliance.</p>
+            </div>
+            <div class="about-graphic">
+                <div class="about-graphic-overlay">
+                    <h4>100% Direct</h4>
+                    <p>Transparent field operations directly managed by verified regional team leads.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ONGOING PROJECTS SECTION -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span>Ongoing Projects</span></h2>
+                <p class="section-subtitle">Real-world sustainable programs designed to tackle core systemic challenges.</p>
+            </div>
+            
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <span class="project-icon">🎓</span>
+                    <h3>Project Shanti Literacy Accelerator</h3>
+                    <p>We build basic computer literacy learning labs in regional schools, distribute crucial physical educational resources, and conduct after-school testing support modules to keep underprivileged and first-generation children engaged in completing their formal schooling tracks.</p>
+                    <span class="project-scope">Active Target: 15 Learning Labs</span>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <span class="project-icon">♀️</span>
+                    <h3>Swayam Siddha Micro-Enterprise</h3>
+                    <p>Providing formal training in textile manufacturing, handcraft production, and basic digital office operations. This initiative integrates direct financial management workshops, enabling marginalized women to launch self-sustaining micro-businesses.</p>
+                    <span class="project-scope">Active Target: 400 Entrepreneurs</span>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <span class="project-icon">🩺</span>
+                    <h3>Niramaya Rural Healthcare Circuits</h3>
+                    <p>Deploying mobile health examination camps to remote sectors lacking medical infrastructure. We specialize in regular diagnostics, basic pediatric nutrition profiling, preventative hygiene supply distributions, and accessible mental health awareness workshops.</p>
+                    <span class="project-scope">Active Target: 50 Remote Sectors</span>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <span class="project-icon">🌱</span>
+                    <h3>Project Vasundhara Micro-Forests</h3>
+                    <p>Combating localized soil degradation through community-driven native tree cultivation programs. We also partner with local neighborhoods to establish basic circular waste-sorting systems, significantly dropping local landfills impact.</p>
+                    <span class="project-scope">Active Target: 20,000 Saplings</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SOCIAL IMPACT SECTION -->
+    <section id="impact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The <span>Social Impact</span> Matrix</h2>
+                <p class="section-subtitle">A direct view of the clear, verified milestones achieved together with our network of contributors.</p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <span class="impact-number">5,400+</span>
+                    <p class="impact-label">Students Supported</p>
+                    <p class="impact-desc">Provided with educational resources, tutoring, and direct school enrollment support.</p>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">1,250+</span>
+                    <p class="impact-label">Women Empowered</p>
+                    <p class="impact-desc">Trained through vocational modules, achieving complete household financial independence.</p>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">35+</span>
+                    <p class="impact-label">Medical Drives</p>
+                    <p class="impact-desc">Providing direct prescription drop-offs and vital care diagnostics to rural towns.</p>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-number">15,000+</span>
+                    <p class="impact-label">Trees Cultivated</p>
+                    <p class="impact-desc">Planted and maintained through sustainable public community ecosystems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CALL TO ACTION & DYNAMIC REGISTRATION FORM -->
+    <section id="join">
+        <div class="container join-layout">
+            <div class="join-info">
+                <h3>Become a Catalyst for Tangible Change</h3>
+                <p>True community transformation requires diverse perspectives, backgrounds, and skills. When you join the InAmigos Foundation volunteer network, you participate directly in real, structured field projects.</p>
+                <p>Whether your expertise lies in direct teaching, community coordinating, graphic design, or digital outreach, your contribution alters lives.</p>
+                <ul class="benefit-list">
+                    <li>Direct field experience certificate verification</li>
+                    <li>Flexible remote and on-ground scheduling options</li>
+                    <li>Mentorship connections with global social leaders</li>
+                </ul>
+            </div>
+
+            <!-- Interative form redirect engine -->
+            <div class="form-wrapper">
+                <h4 style="font-size: 1.4rem; margin-bottom: 5px; color: var(--primary-blue);">Volunteer Registration</h4>
+                <p style="font-size: 0.9rem; color: var(--muted-gray); margin-bottom: 25px;">Submit your profile details to instantly generate your provisional onboarding certificate.</p>
+                
+                <form action="#view-certificate" method="GET">
+                    <div class="form-group">
+                        <label for="name">Your Full Name (For Certificate)</label>
+                        <input type="text" id="name" name="Name" class="form-control" required placeholder="Jane Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="Email" class="form-control" required placeholder="jane.doe@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Preferred Strategic Pillar</label>
+                        <select id="sector" name="Selected Pillar" class="form-control" style="background-color:#ffffff;">
+                            <option value="Education Acceleration">Project Shanti Literacy Accelerator</option>
+                            <option value="Women Enterprise">Swayam Siddha Micro-Enterprise</option>
+                            <option value="Rural Healthcare">Niramaya Rural Healthcare Circuits</option>
+                            <option value="Eco-Conservation">Project Vasundhara Micro-Forests</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Statement of Purpose / Core Skills</label>
+                        <textarea id="message" name="Statement of Purpose" class="form-control" required placeholder="Briefly describe why you want to join and any skills you can offer..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-secondary" style="width: 100%; margin-top: 5px;">Submit & Generate Certificate</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. PURE CSS INSTANT PROVISIONAL CERTIFICATE MODAL DISPLAY
+       ========================================================================== */ -->
+    <div id="view-certificate" class="modal-overlay">
+        <div class="modal-box" style="max-width: 750px; padding: 10px; border-radius: 4px; background: #fff;">
+            <a href="#close" class="close-modal" style="top: 25px; right: 25px; z-index: 10; font-size: 2rem;">&times;</a>
+            
+            <!-- Certificate Frame -->
+            <div style="border: 15px solid #1b4d3e; padding: 40px; text-align: center; background-color: #fff; position: relative;">
+                <div style="border: 2px solid #0f4c81; padding: 20px; min-height: 450px;">
+                    
+                    <div style="font-size: 3.5rem; margin-bottom: 10px; color: #0f4c81;">🏆</div>
+                    
+                    <h2 style="font-family: 'Georgia', serif; font-size: 2.2rem; color: #1b4d3e; font-weight: normal; margin-bottom: 5px;">InAmigos Foundation</h2>
+                    <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; color: #636e72; margin-bottom: 30px;">Official Onboarding Registry</p>
+                    
+                    <h3 style="font-family: 'Georgia', serif; font-style: italic; font-weight: normal; font-size: 1.5rem; margin-bottom: 20px; color: #2d3436;">Provisional Certificate of Mobilization</h3>
+                    
+                    <p style="font-size: 1rem; color: #636e72; margin-bottom: 5px;">This document proudly acknowledges that the applicant has successfully registered as an</p>
+                    <p style="font-size: 1.2rem; font-weight: bold; color: #0f4c81; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px;">Active Associate Field Volunteer</p>
+                    
+                    <p style="font-size: 0.95rem; max-width: 550px; margin: 0 auto 40px auto; color: #636e72; line-height: 1.6;">
+                        By filing this declaration, the bearer is officially cataloged into our tracking database framework for immediate deployment assignment within our core regional socio-economic development pillars.
+                    </p>
+                    
+                    <!-- Structural Signoff Layout Block -->
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; max-width: 500px; margin: 0 auto; padding-top: 20px;">
+                        <div style="text-align: center; width: 150px;">
+                            <p style="font-family: 'Georgia', serif; font-style: italic; font-size: 1.1rem; color: #2d3436; margin-bottom: 0; line-height: 1;">InAmigos HR</p>
+                            <div style="border-top: 1px solid #636e72; margin-top: 5px; padding-top: 5px; font-size: 0.75rem; color: #636e72; text-transform: uppercase;">Registry Board</div>
+                        </div>
+                        <div style="text-align: center; width: 150px;">
+                            <div style="display:inline-block; border: 2px dashed #2ecc71; color: #2ecc71; padding: 4px 8px; font-size: 0.7rem; font-weight: bold; transform: rotate(-5deg); text-transform: uppercase; margin-bottom: 5px;">VERIFIED ID</div>
+                            <div style="border-top: 1px solid #636e72; padding-top: 5px; font-size: 0.75rem; color: #636e72; text-transform: uppercase;">Node System Status</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. FOOTER SYSTEM -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>InAmigos <span>Foundation</span></h3>
+                <p>An authorized awareness non-profit organization dedicated to fostering long-term social growth through continuous community management.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Platform Navigation</h4>
+                <ul>
+                    <li><a href="#home">Back to Top</a></li>
+                    <li><a href="#about">Organizational Mission</a></li>
+                    <li><a href="#projects">Development Verticals</a></li>
+                    <li><a href="#impact">Social Milestones</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Campaign Identifiers</h4>
+                <div class="hashtag-container">
+                    <span>#InAmigos</span>
+                    <span>#SocialImpact</span>
+                    <span>#Volunteer</span>
+                    <span>#BeTheChange</span>
+                </div>
+                <p style="font-size:0.9rem; color:#cbd5e1; margin-top:10px;">Email: info@inamigosfoundation.org</p>
+                <p style="font-size:0.9rem; color:#cbd5e1;">Contact: +91 11 4567 8901</p>
+            </div>
+        </div>
+        <div class="container footer-bottom" style="padding: 0;">
+            <p>&copy; 2026 InAmigos Foundation Platform. All Rights Reserved.</p>
+            <p style="opacity: 0.6; font-size: 0.85rem;">Production Node: Verified Clean HTML5/CSS3 Core</p>
+        </div>
+    </footer>
+
+</body>
+</html>
